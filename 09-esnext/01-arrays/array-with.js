@@ -1,4 +1,4 @@
-const superHeroes = [
+const state = [
   {
     id: 1,
     name: "Batman",
@@ -17,9 +17,23 @@ const superHeroes = [
   },
 ];
 
-const superHeroesCopy = structuredClone(superHeroes);
+const index = 1;
+const newName = "Green Lantern";
 
-superHeroesCopy[0].name = "Green Lantern";
+// const newState = state.map((hero, i) => {
+//   if (i === index) {
+//     hero.name = newName;
+//   }
 
-console.table(superHeroes);
-console.table(superHeroesCopy);
+//   return hero;
+// });
+
+//Nueva funcion with:
+const newState = state.with(index, {
+  //Nueva funcion at:
+  ...state.at(index),
+  name: newName,
+});
+
+state[0].name = "Volcan Negro";
+console.table(newState);
